@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check-types": "astro check",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/solid-js": "^5.0.9",
+    "@repo/ui": "workspace:*",
+    "@tailwindcss/vite": "^4.1.4",
+    "astro": "^5.7.6",
+    "solid-js": "^1.9.5",
+    "tailwindcss": "^4.1.4"
+  }
+}
