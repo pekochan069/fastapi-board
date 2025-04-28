@@ -1,0 +1,26 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.0.0-beta.1/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false
+	},
+	"formatter": {
+		"enabled": false
+	},
+	"linter": {
+		"enabled": true,
+		"domains": {
+			"solid": "recommended"
+		},
+		"rules": {
+			"recommended": true
+		}
+	},
+	"assist": {
+		"enabled": true
+	}
+}

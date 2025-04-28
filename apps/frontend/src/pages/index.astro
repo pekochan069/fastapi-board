@@ -1,5 +1,17 @@
 ---
+import { Button } from "~/components/ui/button";
 import BaseLayout from "../layouts/base-layout.astro";
+
+const res = await fetch("http://localhost:8000");
+const data = await res.json();
 ---
 
-<BaseLayout> <div>Hello, world!</div></BaseLayout>
+<BaseLayout>
+  <div>
+    <h1>Hello World!</h1>
+    <div>
+      <Button />
+    </div>
+    {data.message}
+  </div>
+</BaseLayout>

@@ -1,0 +1,21 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[all]>=0.115.12",
+ "granian>=2.2.5",
+ "sqlmodel>=0.0.24",
+]
+
+[tool.uv]
+
+[tool.poe.tasks]
+dev = "granian --interface asgi src.main:app"
+format = "ruff format src"
+lint = "ruff check --fix src"
+
+[dependency-groups]
+dev = ["poethepoet>=0.34.0", "ruff>=0.11.7"]

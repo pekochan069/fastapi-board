@@ -15,10 +15,6 @@
       "persistent": true,
       "cache": false
     },
-    "format": {
-      "dependsOn": [
-        "format"
-      ]
-    }
+    "format": {}
   }
 }
