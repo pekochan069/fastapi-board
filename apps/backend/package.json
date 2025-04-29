@@ -2,9 +2,17 @@
   "name": "backend",
   "private": true,
   "scripts": {
+    "postinstall": "uv sync",
     "dev": "uv run poe dev",
     "format": "uv run poe format",
-    "lint": "uv run poe lint"
+    "lint": "uv run poe lint",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "seed.ts"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "better-sqlite3": "^11.9.1",
+    "drizzle-kit": "^0.31.0",
+    "drizzle-orm": "^0.43.1"
+  }
 }
