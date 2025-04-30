@@ -36,3 +36,5 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .ruff_cache/
 .venv/
 __pycache__/
+
+database.dev.db

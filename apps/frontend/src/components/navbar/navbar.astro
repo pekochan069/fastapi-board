@@ -1,0 +1,29 @@
+---
+import { Fa6BrandsGithub } from "~/icons/fa6-brands/github";
+import { ThemeToggle } from "./theme-toggle";
+---
+
+<header class="fixed top-0 container bg-background px-4 py-2 backdrop-blur-2xl md:px-6 md:py-3">
+  <div class="flex items-center justify-between">
+    <nav>
+      <a href="/">
+        <span class="text-2xl font-bold">FastAPI 게시판</span>
+      </a>
+    </nav>
+    <div class="flex gap-2">
+      <div class="h-10 w-10">
+        <a
+          href="https://github.com/pekochan069/fastapi-board"
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+        >
+          <Fa6BrandsGithub class="h-[1.2rem] w-[1.2rem]" />
+        </a>
+      </div>
+      <div class="h-10 w-10">
+        <ThemeToggle client:only="solid-js" />
+      </div>
+    </div>
+  </div>
+</header>

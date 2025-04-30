@@ -1,5 +1,6 @@
-from sqlalchemy import create_engine
-from sqlmodel import Session, SQLModel
+from sqlalchemy.ext.asyncio import create_async_engine
+
+from ..env import DATABASE_URL
 
 from .schema import (
     User,
@@ -11,15 +12,9 @@ from .schema import (
 )
 
 
-sqlite_file_name = "database.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
-
+db_url = f"sqlite+aiosqlite:///{DATABASE_URL}"
 connect_args = {"check_same_thread": False}
-engine = create_engine(sqlite_url, connect_args=connect_args)
-
-
-def create_db_and_tables():
-    SQLModel.metadata.create_all(engine)
+engine = create_async_engine(db_url, connect_args=connect_args)
 
 
 __all__ = [
@@ -30,5 +25,4 @@ __all__ = [
     "Post",
     "Comment",
     "engine",
-    "create_db_and_tables",
 ]

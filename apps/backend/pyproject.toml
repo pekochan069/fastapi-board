@@ -5,9 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "aiosqlite>=0.21.0",
     "fastapi[all]>=0.115.12",
- "granian>=2.2.5",
- "sqlmodel>=0.0.24",
+    "granian>=2.2.5",
+    "sqlmodel>=0.0.24",
 ]
 
 [tool.uv]

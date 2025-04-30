@@ -1,8 +1,10 @@
 ---
+import "overlayscrollbars/overlayscrollbars.css";
 import "~/styles/global.css";
+import Navbar from "~/components/navbar/navbar.astro";
 ---
 
-<html lang="en">
+<html lang="ko" data-overlayscrollbars-initialize>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -10,7 +12,49 @@ import "~/styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>FastAPI 게시판</title>
   </head>
-  <body>
-    <slot />
+  <body data-overlayscrollbars-initialize>
+    <Navbar />
+    <main class="">
+      <slot />
+    </main>
   </body>
+  <script>
+    import { OverlayScrollbars } from "overlayscrollbars";
+
+    OverlayScrollbars(document.body, {
+      scrollbars: {
+        autoHide: "scroll",
+      },
+    });
+  </script>
+  <script is:inline>
+    function setTheme(document) {
+      const getThemePreference = () => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      };
+      const isDark = getThemePreference() === "dark";
+
+      document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+      if (typeof localStorage !== "undefined") {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+    }
+
+    setTheme(document);
+
+    document.documentElement.addEventListener("astro:before-swap", (event) => {
+      setTheme(event.newDocument);
+    });
+  </script>
 </html>

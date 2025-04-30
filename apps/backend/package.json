@@ -3,10 +3,11 @@
   "private": true,
   "scripts": {
     "postinstall": "uv sync",
-    "dev": "uv run poe dev",
+    "dev": "NODE_ENV=development DATABASE_URL=database.dev.db uv run poe dev",
     "format": "uv run poe format",
     "lint": "uv run poe lint",
-    "db:studio": "drizzle-kit studio",
+    "db:studio": "DATABASE_URL=database.db drizzle-kit studio",
+    "db:studio:dev": "DATABASE_URL=database.dev.db drizzle-kit studio",
     "db:seed": "seed.ts"
   },
   "type": "module",
