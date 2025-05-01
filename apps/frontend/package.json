@@ -16,11 +16,14 @@
     "@astrojs/node": "^9.2.1",
     "@astrojs/solid-js": "^5.0.9",
     "@tailwindcss/vite": "^4.1.4",
+    "@tiptap/pm": "^2.11.9",
+    "@tiptap/starter-kit": "^2.11.9",
     "astro": "^5.7.6",
     "effect": "^3.14.14",
     "overlayscrollbars": "^2.11.1",
     "solid-js": "^1.9.5",
-    "tailwindcss": "^4.1.4"
+    "tailwindcss": "^4.1.4",
+    "tiptap-solid": "^1.1.1"
   },
   "devDependencies": {
     "prettier": "^3.5.3"

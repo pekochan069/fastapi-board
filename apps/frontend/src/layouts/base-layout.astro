@@ -14,8 +14,10 @@ import Navbar from "~/components/navbar/navbar.astro";
   </head>
   <body data-overlayscrollbars-initialize>
     <Navbar />
-    <main class="">
-      <slot />
+    <main class="container mx-auto mt-16">
+      <div class="@container/main">
+        <slot />
+      </div>
     </main>
   </body>
   <script>

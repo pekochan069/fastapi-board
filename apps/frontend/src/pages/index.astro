@@ -1,7 +1,10 @@
 ---
+import { Editor } from "~/components/editor";
 import BaseLayout from "../layouts/base-layout.astro";
 ---
 
 <BaseLayout>
-  <div>FastAPI 게시판</div>
+  <div>
+    <Editor client:only="solid-js" />
+  </div>
 </BaseLayout>
