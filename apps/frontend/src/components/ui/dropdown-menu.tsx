@@ -107,7 +107,7 @@ const DropdownMenuSubTrigger = <T extends ValidComponent = "div">(
       {...rest}
     >
       {props.children}
-      {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -164,7 +164,6 @@ const DropdownMenuCheckboxItem = <T extends ValidComponent = "div">(
     >
       <span class="absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -221,7 +220,6 @@ const DropdownMenuRadioItem = <T extends ValidComponent = "div">(
     >
       <span class="absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

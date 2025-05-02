@@ -1,4 +1,4 @@
-import { JSX } from "solid-js";
+import type { JSX } from "solid-js";
 
 export function FluentMaximize24Filled(props: JSX.IntrinsicElements["svg"]) {
   return (

@@ -2,6 +2,7 @@
 import "overlayscrollbars/overlayscrollbars.css";
 import "~/styles/global.css";
 import Navbar from "~/components/navbar/navbar.astro";
+import { Toaster } from "~/components/ui/sonner";
 ---
 
 <html lang="ko" data-overlayscrollbars-initialize>
@@ -19,6 +20,7 @@ import Navbar from "~/components/navbar/navbar.astro";
         <slot />
       </div>
     </main>
+    <Toaster client:load />
   </body>
   <script>
     import { OverlayScrollbars } from "overlayscrollbars";

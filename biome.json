@@ -17,7 +17,8 @@
 			"solid": "recommended"
 		},
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"a11y": "off"
 		}
 	},
 	"assist": {

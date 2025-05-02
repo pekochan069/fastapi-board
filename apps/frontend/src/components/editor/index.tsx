@@ -1,10 +1,5 @@
-import StarterKit from "@tiptap/starter-kit";
-import { createEditor, EditorContent } from "tiptap-solid";
+// https://github.com/Aslam97/shadcn-minimal-tiptap
+import { EditorProvider, useEditor } from "./context";
+import { EditorComponent } from "./editor-component";
 
-export function Editor() {
-  const editor = createEditor({
-    extensions: [StarterKit],
-  });
-
-  return <EditorContent editor={editor()} />;
-}
+export { useEditor, EditorComponent, EditorProvider };

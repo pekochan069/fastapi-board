@@ -2,7 +2,6 @@ import type { JSX } from "solid-js";
 
 export function Fa6BrandsGithub(props: JSX.IntrinsicElements["svg"]) {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="0.97em"

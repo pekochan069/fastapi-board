@@ -61,7 +61,6 @@ const PaginationEllipsis = <T extends ValidComponent = "div">(
       class={cn("flex size-10 items-center justify-center", local.class)}
       {...others}
     >
-      {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -106,7 +105,6 @@ const PaginationPrevious = <T extends ValidComponent = "button">(
         when={local.children}
         fallback={
           <>
-            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -155,7 +153,7 @@ const PaginationNext = <T extends ValidComponent = "button">(
         fallback={
           <>
             <span>Next</span>
-            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
