@@ -7,7 +7,7 @@ import { splitProps } from "solid-js";
 import { cn } from "~/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
   {
     variants: {
       variant: {
@@ -17,6 +17,13 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        red: "bg-shadcn-red text-shadcn-red-foreground hover:bg-shadcn-red/80",
+        rose: "bg-shadcn-rose text-shadcn-rose-foreground hover:bg-shadcn-rose/80",
+        orange: "bg-shadcn-orange text-shadcn-orange-foreground hover:bg-shadcn-orange/80",
+        yellow: "bg-shadcn-yellow text-shadcn-yellow-foreground hover:bg-shadcn-yellow/80",
+        green: "bg-shadcn-green text-shadcn-green-foreground hover:bg-shadcn-green/80",
+        blue: "bg-shadcn-blue text-shadcn-blue-foreground hover:bg-shadcn-blue/80",
+        violet: "bg-shadcn-violet text-shadcn-violet-foreground hover:bg-shadcn-violet/80",
       },
       size: {
         default: "h-10 px-4 py-2",

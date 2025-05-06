@@ -1,6 +1,6 @@
 import type { Content, Editor, EditorOptions } from "@tiptap/core";
 import type { Accessor, ParentProps } from "solid-js";
-import { throttle } from "@solid-primitives/scheduled";
+import { debounce } from "@solid-primitives/scheduled";
 import { Placeholder } from "@tiptap/extension-placeholder";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Typography } from "@tiptap/extension-typography";
@@ -9,6 +9,7 @@ import StarterKit from "@tiptap/starter-kit";
 import { createContext, mergeProps, useContext } from "solid-js";
 import { toast } from "solid-sonner";
 import { createEditor } from "tiptap-solid";
+import { cn } from "~/lib/utils";
 import {
   CodeBlockLowlight,
   Color,
@@ -35,7 +36,7 @@ export function useEditor() {
 }
 
 export interface EditorProviderProps extends Partial<EditorOptions> {
-  editorClassName?: string;
+  editorClass?: string;
   placeholder?: string;
   output?: "json" | "html" | "text";
   value?: Content;
@@ -45,18 +46,18 @@ export interface EditorProviderProps extends Partial<EditorOptions> {
 }
 
 export function EditorProvider(props: ParentProps<EditorProviderProps>) {
-  const merged = mergeProps(
+  props = mergeProps(
     {
       output: "json" as EditorProviderProps["output"],
       placeholder: "내용을 입력하세요...",
-      throttle: 0,
+      throttle: 200,
     },
     props,
   );
 
-  const throttledUpdate = throttle((editor: Editor) => {
-    merged.onUpdate?.(getOutput(editor, merged.output));
-  }, merged.throttle);
+  const throttledUpdate = debounce((editor: Editor) => {
+    props.onUpdate?.(getOutput(editor, props.output));
+  }, props.throttle);
 
   const onCreate = (editor: Editor) => {
     if (props.value && editor.isEmpty) {
@@ -64,11 +65,19 @@ export function EditorProvider(props: ParentProps<EditorProviderProps>) {
     }
   };
 
-  const onBlur = (editor: Editor) => merged.onBlur?.(getOutput(editor, merged.output));
+  const onBlur = (editor: Editor) => props.onBlur?.(getOutput(editor, props.output));
 
   const editor = createEditor({
     autofocus: true,
     content: "",
+    editorProps: {
+      attributes: {
+        autocomplete: "off",
+        autocorrect: "off",
+        autocapitalize: "off",
+        class: cn("focus:outline-none", props.editorClass),
+      },
+    },
     extensions: [
       StarterKit.configure({
         horizontalRule: false,
@@ -193,7 +202,7 @@ export function EditorProvider(props: ParentProps<EditorProviderProps>) {
       HorizontalRule,
       ResetMarksOnEnter,
       CodeBlockLowlight,
-      Placeholder.configure({ placeholder: () => merged.placeholder }),
+      Placeholder.configure({ placeholder: props.placeholder }),
     ],
     onBlur: (props) => onBlur(props.editor),
     onCreate: (props) => onCreate(props.editor),

@@ -1,6 +1,6 @@
 import type { TooltipContentProps } from "@kobalte/core/tooltip";
 import type { ComponentProps } from "solid-js";
-import { Show } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Toggle } from "~/components/ui/toggle";
 import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip";
 import { cn } from "~/lib/utils";
@@ -11,25 +11,31 @@ interface ToolbarButtonProps extends ComponentProps<typeof Toggle> {
   tooltipOptions?: TooltipContentProps;
 }
 
-export const ToolbarButton = (props: ToolbarButtonProps) => {
-  const ToggleButton = () => (
-    <Toggle className={cn({ "bg-accent": props.isActive }, props.class)} {...props}>
-      {props.children}
-    </Toggle>
-  );
+export function ToolbarButton(props: ToolbarButtonProps) {
+  const [local, others] = splitProps(props, [
+    "class",
+    "tooltip",
+    "tooltipOptions",
+    "children",
+    "isActive",
+  ]);
 
   return (
-    <Show when={props.tooltip} fallback={<ToggleButton />}>
-      <Tooltip>
-        <TooltipTrigger as={ToggleButton} />
-        <TooltipContent {...props.tooltipOptions}>
-          <div class="flex flex-col items-center text-center">{props.tooltip}</div>
+    <Show when={local.tooltip} fallback={<Toggle>{local.children}</Toggle>}>
+      <Tooltip openDelay={0} closeDelay={0}>
+        <TooltipTrigger type="button">
+          <Toggle
+            data-active={local.isActive}
+            class={cn("data-[active=true]:bg-accent", local.class)}
+            {...others}
+          >
+            {local.children}
+          </Toggle>
+        </TooltipTrigger>
+        <TooltipContent {...local.tooltipOptions}>
+          <div class="flex flex-col items-center text-center">{local.tooltip}</div>
         </TooltipContent>
       </Tooltip>
     </Show>
   );
-};
-
-ToolbarButton.displayName = "ToolbarButton";
-
-export default ToolbarButton;
+}

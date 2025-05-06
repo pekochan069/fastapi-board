@@ -21,9 +21,9 @@ export interface ShouldShowProps {
 export interface FormatAction {
   label: string;
   icon?: JSX.Element;
-  action: (editor: Editor | null) => void;
-  isActive: (editor: Editor | null) => boolean;
-  canExecute: (editor: Editor | null) => boolean;
+  action: (editor: Editor) => void;
+  isActive: (editor: Editor) => boolean | undefined;
+  canExecute: (editor: Editor) => boolean | undefined;
   shortcuts: string[];
   value: string;
 }

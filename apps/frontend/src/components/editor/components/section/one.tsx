@@ -77,7 +77,7 @@ const formatActions: TextStyle[] = [
 ];
 
 interface SectionOneProps extends VariantProps<typeof toggleVariants> {
-  editor: Editor | null;
+  editor: Editor;
   activeLevels?: Level[];
 }
 
@@ -95,9 +95,9 @@ export function SectionOne(props: SectionOneProps) {
 
   const handleStyleChange = (level?: Level) => {
     if (level) {
-      merged.editor?.chain().focus().toggleHeading({ level }).run();
+      merged.editor.chain().focus().toggleHeading({ level }).run();
     } else {
-      merged.editor?.chain().focus().setParagraph().run();
+      merged.editor.chain().focus().setParagraph().run();
     }
   };
 
@@ -106,8 +106,8 @@ export function SectionOne(props: SectionOneProps) {
       onClick={() => handleStyleChange(itemProps.level)}
       class={cn("flex flex-row items-center justify-between gap-4", {
         "bg-accent": itemProps.level
-          ? merged.editor?.isActive("heading", { props: itemProps.level })
-          : merged.editor?.isActive("paragraph"),
+          ? merged.editor.isActive("heading", { props: itemProps.level })
+          : merged.editor.isActive("paragraph"),
       })}
       aria-label={itemProps.label}
     >
@@ -119,17 +119,17 @@ export function SectionOne(props: SectionOneProps) {
   );
 
   return (
-    <DropdownMenu>
+    <DropdownMenu placement="bottom-start">
       <DropdownMenuTrigger
         as={ToolbarButton}
-        isActive={merged.editor?.isActive("heading")}
-        tooltip="Text styles"
+        isActive={merged.editor.isActive("heading")}
+        tooltip="텍스트 스타일"
         aria-label="Text styles"
-        pressed={merged.editor?.isActive("heading")}
-        disabled={merged.editor?.isActive("codeBlock")}
+        pressed={merged.editor.isActive("heading")}
+        disabled={merged.editor.isActive("codeBlock")}
         size={merged.size}
         variant={merged.variant}
-        class="gap-0"
+        class="flex gap-0 hover:cursor-pointer"
       >
         <RadixIconsLetterCaseCapitalize class="size-5" />
         <TablerChevronDown class="size-5" />

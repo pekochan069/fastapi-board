@@ -17,13 +17,13 @@ import { ShortcutKey } from "./shortcut-key";
 import { ToolbarButton } from "./toolbar-button";
 
 interface ToolbarSectionProps extends VariantProps<typeof toggleVariants> {
-  editor: Editor | null;
+  editor: Editor;
   actions: FormatAction[];
   activeActions?: string[];
   mainActionCount?: number;
   dropdownIcon?: JSX.Element;
   dropdownTooltip?: string;
-  dropdownclass?: string;
+  dropdownClass?: string;
 }
 
 export function ToolbarSection(props: ToolbarSectionProps) {
@@ -52,7 +52,6 @@ export function ToolbarSection(props: ToolbarSectionProps) {
 
   const RenderToolbarButton = (action: FormatAction) => (
     <ToolbarButton
-      key={action.label}
       onClick={() => action.action(merged.editor)}
       disabled={!action.canExecute(merged.editor)}
       isActive={action.isActive(merged.editor)}
@@ -60,6 +59,7 @@ export function ToolbarSection(props: ToolbarSectionProps) {
       aria-label={action.label}
       size={merged.size}
       variant={merged.variant}
+      class="hover:cursor-pointer"
     >
       {action.icon}
     </ToolbarButton>
@@ -86,14 +86,14 @@ export function ToolbarSection(props: ToolbarSectionProps) {
     <>
       <For each={action().mainActions}>{(item) => <RenderToolbarButton {...item} />}</For>
       <Show when={action().dropdownActions.length > 0}>
-        <DropdownMenu>
+        <DropdownMenu placement="bottom-start">
           <DropdownMenuTrigger
             as={ToolbarButton}
             isActive={isDropdownActive()}
             tooltip={merged.dropdownTooltip}
             aria-label={merged.dropdownTooltip}
-            class={cn("gap-0", merged.dropdownClass)}
-            size={merged.size}
+            class={cn("flex gap-0 hover:cursor-pointer", merged.dropdownClass)}
+            size="md"
             variant={merged.variant}
           >
             <Show when={merged.dropdownIcon} fallback={<TablerChevronDown class="size-5" />}>

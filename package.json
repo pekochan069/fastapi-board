@@ -21,5 +21,8 @@
     "apps/*",
     "packages/*"
   ],
-  "packageManager": "bun@1.2.4"
+  "packageManager": "bun@1.2.4",
+  "dependencies": {
+    "overlayscrollbars-solid": "^0.5.6"
+  }
 }

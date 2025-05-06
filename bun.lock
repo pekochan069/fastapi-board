@@ -3,6 +3,9 @@
   "workspaces": {
     "": {
       "name": "fastapi-board",
+      "dependencies": {
+        "overlayscrollbars-solid": "^0.5.6",
+      },
       "devDependencies": {
         "@biomejs/biome": "^2.0.0-beta.1",
         "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
@@ -1032,6 +1035,8 @@
     "orderedmap": ["orderedmap@2.1.1", "", {}, "sha512-TvAWxi0nDe1j/rtMcWcIj94+Ffe6n7zhow33h40SKxmsmozs6dz/e+EajymfoFcHd7sxNn8yHM8839uixMOV6g=="],
 
     "overlayscrollbars": ["overlayscrollbars@2.11.1", "", {}, "sha512-kogaNaBTIizRenQ2GTzt2cpkEH9B0nUBXseRxqQblH/YicJ3TaWuvn8E5TXPPfJCVoHYSgBYZzzva40kCERKHg=="],
+
+    "overlayscrollbars-solid": ["overlayscrollbars-solid@0.5.6", "", { "peerDependencies": { "overlayscrollbars": "^2.0.0", "solid-js": "^1.7.0" } }, "sha512-n1iaIT5vLxT7TSum9f80BDfIpXX53CcCxWyqWid9doJDDPPPzEMv+QbDM8I5sctbeExUqc9WAgNnu3W9/M2Q3g=="],
 
     "p-limit": ["p-limit@6.2.0", "", { "dependencies": { "yocto-queue": "^1.1.1" } }, "sha512-kuUqqHNUqoIWp/c467RI4X6mmyuojY5jGutNU0wVTmEOOfcuwLqyMVoAi9MKi2Ak+5i9+nhmrK4ufZE8069kHA=="],
 

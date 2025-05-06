@@ -1,11 +1,13 @@
 import type { ComponentProps } from "solid-js";
-import { createSignal, onCleanup, onMount } from "solid-js";
+import { createSignal, onCleanup, onMount, splitProps } from "solid-js";
 
 interface MeasuredContainerProps extends ComponentProps<"div"> {
   name: string;
 }
 
 export function MeasuredContainer(props: MeasuredContainerProps) {
+  const [local, others] = splitProps(props, ["name", "class", "children"]);
+
   let containerRef: HTMLDivElement | undefined;
 
   const [observer, setObserver] = createSignal<ResizeObserver | null>(null);
@@ -38,8 +40,8 @@ export function MeasuredContainer(props: MeasuredContainerProps) {
   };
 
   const customStyle = () => ({
-    [`--${props.name}-width`]: `${rect().width}px`,
-    [`--${props.name}-height`]: `${rect().height}px`,
+    [`--${local.name}-width`]: `${rect().width}px`,
+    [`--${local.name}-height`]: `${rect().height}px`,
   });
 
   onMount(() => {
@@ -59,12 +61,8 @@ export function MeasuredContainer(props: MeasuredContainerProps) {
   });
 
   return (
-    <div
-      class="group/measured-container absolute inset-0 flex items-center justify-center"
-      style={{ ...customStyle() }}
-      ref={containerRef}
-    >
-      {props.children}
+    <div style={{ ...customStyle() }} ref={containerRef} {...others} class={local.class}>
+      {local.children}
     </div>
   );
 }
